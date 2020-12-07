@@ -69,7 +69,6 @@ dotted black bags contain no other bags.
 (defn- accum [start graph]
   (loop [leaves []
          queue [[start 1]]]
-    (println leaves queue)
     (if (empty? queue)
       (->> leaves (reduce +))
       (let [[[cur acc] & rest] queue]

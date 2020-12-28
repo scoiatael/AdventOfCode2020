@@ -53,10 +53,16 @@
          y 0
          r 0
          s 1]
-    (if
-        (>= 0 b) [x y]
+    (if (>= 0 b) [x y]
         (let [q (quot a b)]
-          (recur b (mod a b) r s (- x (* q r)) (- y (* q s)))))))
+          (recur
+           b                            ; =: a
+           (mod a b)                    ; =: b
+           r                            ; =: x
+           s                            ; =: y
+           (- x (* q r))                ; =: r
+           (- y (* q s))                ; =: s
+           )))))
 
 (defn solve2 [eqs]
   (let [M (->> eqs (map :n) (reduce *))
